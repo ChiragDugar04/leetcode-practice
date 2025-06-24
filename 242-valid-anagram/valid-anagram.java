@@ -2,7 +2,7 @@ class Solution {
     public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) return false;
 
-        Map<Character, Integer> countMap = new HashMap<>();
+        HashMap<Character, Integer> countMap = new HashMap<>();
 
         for (char ch : s.toCharArray()) {
             countMap.put(ch, countMap.getOrDefault(ch, 0) + 1);
