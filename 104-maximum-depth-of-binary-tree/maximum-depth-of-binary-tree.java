@@ -18,25 +18,9 @@ class Solution {
         if(root==null){
             return 0;
         }
-        Queue<TreeNode> queue=new LinkedList<>();
-        queue.offer(root);
-        int level=0;
-        int size=0;
-        while(!queue.isEmpty()){
-            size=queue.size();
-            while(size>0){
-                TreeNode a=queue.poll();
-                size--;
-                if(a.left!=null){
-                    queue.offer(a.left);
-                }
-                if(a.right!=null){
-                    queue.offer(a.right);
-                }
-            }
-            level++;
-            
-        }
-        return level;
+        int lh=maxDepth(root.left);
+        int rh=maxDepth(root.right);
+
+        return (1+Math.max(lh,rh));
     }
 }
