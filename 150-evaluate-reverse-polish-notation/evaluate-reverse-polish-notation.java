@@ -30,6 +30,6 @@ class Solution {
             }
 
         }
-        return stack.peek();
+        return stack.pop();
     }
 }
