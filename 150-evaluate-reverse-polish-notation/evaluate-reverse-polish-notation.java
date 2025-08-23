@@ -29,30 +29,7 @@ class Solution {
                 }
                 default -> stack.push(Integer.parseInt(token));
             }
-            // if(token.equals("+")){
-                
-            // }
-            // else if(token.equals("-")){
-            //     int first=stack.pop();
-            //     int second=stack.pop();
-            //     int ans=second-first;
-            //     stack.push(ans);
-            // }
-            // else if(token.equals("*")){
-            //     int first=stack.pop();
-            //     int second=stack.pop();
-            //     int ans=second*first;
-            //     stack.push(ans);
-            // }
-            // else if(token.equals("/")){
-            //     int first=stack.pop();
-            //     int second=stack.pop();
-            //     int ans=(int)(second/first);
-            //     stack.push(ans);
-            // }else{
-            //     stack.push(Integer.parseInt(token));
-            // }
-
+           
         }
         return stack.pop();
     }
