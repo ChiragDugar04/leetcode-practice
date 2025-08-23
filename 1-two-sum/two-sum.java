@@ -1,13 +1,18 @@
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
-      HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-            if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
-            }
+import java.util.ArrayList;
+import java.util.List;
 
-            map.put(nums[i], i);
+public class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        List<Integer> ans = new ArrayList<>();
+        for (int num : nums) {
+            ans.add(num); 
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            int difference = target - nums[i];
+            if (ans.contains(difference) && ans.indexOf(difference) != i) {
+                return new int[] {i, ans.indexOf(difference)};  
+            }
         }
         return new int[] {};
     }
