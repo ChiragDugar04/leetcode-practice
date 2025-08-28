@@ -10,7 +10,7 @@ class Solution {
                 curr++;
                 longest=Math.max(longest,curr);
             }else{
-                curr=1;
+                curr=1;//if a new number is there we start a new sequqnece length counter
             }
         }
         return longest;
