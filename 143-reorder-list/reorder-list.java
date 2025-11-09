@@ -1,45 +1,35 @@
-/**
- * Definition for singly-linked list.
-//  */
-// public class ListNode {
-//     int val;
-//     ListNode next;
-
-//     ListNode() {}
-//     ListNode(int val) { this.val = val; }
-//     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-// }
-
 class Solution {
+    public void reorderList(ListNode head) {
+        if (head == null || head.next == null) return;
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
 
-   public void reorderList(ListNode head) {
-    if (head == null || head.next == null) return;
+        //Split and reverse second half
+        ListNode second = slow.next;  
+        slow.next = null;        
+        ListNode prev = null, cur = second;
+        while (cur != null) {
+            ListNode nxt = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = nxt;
+        }
+        
+       //Merge two halves: first=head, second=prev
+        ListNode first = head, secondHalf = prev;
+        while (secondHalf != null) {
+            ListNode t1 = first.next;
+            ListNode t2 = secondHalf.next;
 
-    ListNode slow = head, fast = head;
-    while (fast != null && fast.next != null) {
-        slow = slow.next;
-        fast = fast.next.next;
+            first.next = secondHalf;
+            secondHalf.next = t1;
+
+            first = t1;
+            secondHalf = t2;
+        }
+    
     }
-
- 
-    ListNode prev = null, curr = slow;
-    while (curr != null) {
-        ListNode temp = curr.next;
-        curr.next = prev;
-        prev = curr;
-        curr = temp;
-    }
-
-    ListNode first = head, second = prev;
-    while (second.next != null) {
-        ListNode temp1 = first.next;
-        ListNode temp2 = second.next;
-
-        first.next = second;
-        second.next = temp1;
-
-        first = temp1;
-        second = temp2;
-    }
-}
 }
